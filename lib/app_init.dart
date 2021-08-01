@@ -1,5 +1,5 @@
 
-import 'http/Url.dart';
+import 'http/url.dart';
 
 class AppInit{
   AppInit._();
