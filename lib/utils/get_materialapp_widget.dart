@@ -20,6 +20,13 @@ class _GetMaterialAppWidgetState extends State<GetMaterialAppWidget> {
     //   initialRoute: "/",
     //   routes: {"/": (context) => widget.child},
     // );
-    return GetMaterialApp(home: widget.child,);
+    // return GetMaterialApp(home: widget.child,);
+    return GetMaterialApp(
+      title: "flutter_open",
+      initialRoute: "/",
+      getPages: [
+        GetPage(name: "/", page:()=> widget.child)
+      ],
+    );
   }
 }
