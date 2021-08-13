@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_open/widget/loading_state_widget.dart';
 
 class BaseChangeNotifier with ChangeNotifier {
   //是否销毁
   bool _dispose = false;
+  ViewState viewState = ViewState.loading;
 
   @override
   void dispose() {

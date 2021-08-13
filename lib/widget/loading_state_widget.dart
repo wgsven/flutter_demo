@@ -41,8 +41,8 @@ class _LoadingState extends State<LoadingStateWidget> {
         children: [
           Image.asset(
             "images/ic_error.png",
-            width: 36,
-            height: 36,
+            width: 50,
+            height: 50,
           ),
           Padding(
             padding: const EdgeInsets.only(top: 10),
