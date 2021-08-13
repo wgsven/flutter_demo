@@ -1,4 +1,3 @@
-import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_open/utils/cached_network_image_provider.dart';
 import 'package:flutter_open/viewmodel/home/home_body_viewmodel.dart';

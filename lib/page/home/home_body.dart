@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_open/model/common_item.dart';
+import 'package:flutter_open/state/base_list_state.dart';
 import 'package:flutter_open/viewmodel/base_widget.dart';
 import 'package:flutter_open/viewmodel/home/home_body_viewmodel.dart';
 import 'package:flutter_open/widget/banner_widget.dart';
@@ -9,22 +11,21 @@ class HomeBody extends StatefulWidget {
   State<StatefulWidget> createState() => _HomeBodyState();
 }
 
-class _HomeBodyState extends State<HomeBody>
-    with AutomaticKeepAliveClientMixin {
-  @override
-  Widget build(BuildContext context) {
-    super.build(context);
-    return ProviderWidget<HomeBodyVm>(
-      model: HomeBodyVm(),
-      onModelInit: (model) => model.refresh(),
-      builder: (BuildContext context, HomeBodyVm model, Widget? child) {
-        return LoadingStateWidget(
-            viewState: model.viewState,
-            retry: model.retry,
-            child: _banner(model));
-      },
-    );
-  }
+class _HomeBodyState extends BaseListState<Item,HomeBodyVm,HomeBody>{
+  // @override
+  // Widget build(BuildContext context) {
+  //   super.build(context);
+  //   return ProviderWidget<HomeBodyVm>(
+  //     model: HomeBodyVm(),
+  //     onModelInit: (model) => model.refresh(),
+  //     builder: (BuildContext context, HomeBodyVm model, Widget? child) {
+  //       return LoadingStateWidget(
+  //           viewState: model.viewState,
+  //           retry: model.retry,
+  //           child: _banner(model));
+  //     },
+  //   );
+  // }
 
   _banner(model){
     return Container(
@@ -38,5 +39,10 @@ class _HomeBodyState extends State<HomeBody>
   }
 
   @override
-  bool get wantKeepAlive => true;
+  Widget getContentChild(HomeBodyVm model) {
+    return  _banner(model);
+  }
+
+  @override
+  HomeBodyVm get viewModel => HomeBodyVm();
 }
