@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_open/model/common_item.dart';
 import 'package:flutter_open/utils/cached_network_image_provider.dart';

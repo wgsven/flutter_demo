@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_open/http/http_manager.dart';
 import 'package:flutter_open/model/paging_model.dart';
 import 'package:flutter_open/utils/toast_utils.dart';
@@ -19,7 +20,9 @@ abstract class BaseListViewModel<T, M extends PagingModel<T>>
 
   void removeUselessData(List<T>? list) {}
 
-  void getData(List<T>? list);
+  void getData(List<T>? list){
+    this.itemList = list!;
+  }
 
   void doExtraAfterRefresh() {}
 
@@ -44,6 +47,7 @@ abstract class BaseListViewModel<T, M extends PagingModel<T>>
           viewState = ViewState.done;
 
           //下一页数据
+
           nextPageUrl = getNextUrl(model);
           refreshController.refreshCompleted();
           refreshController.footerMode?.value = LoadStatus.canLoading;
@@ -72,12 +76,13 @@ abstract class BaseListViewModel<T, M extends PagingModel<T>>
           }
           nextPageUrl = getNextUrl(model);
           refreshController.refreshCompleted();
-          notifyListeners();
+          refreshController.footerMode?.value = LoadStatus.canLoading;
         },
         fail: (e) {
           viewState = ViewState.error;
           refreshController.refreshFailed();
-        });
+        },
+        complete: () => notifyListeners());
   }
 
   void retry() {
