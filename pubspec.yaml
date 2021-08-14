@@ -39,6 +39,14 @@ dependencies:
   flutter_native_splash: ^1.2.0
   flare_flutter: ^3.0.2
   fluttertoast: ^8.0.7
+  get: 4.2.4
+  provider: ^5.0.0
+  http: ^0.13.3
+#  flutter_swiper: ^1.1.6
+  flutter_swiper_null_safety: ^1.0.2
+  extended_image: ^4.1.0
+  pull_to_refresh: ^2.0.0
+  flustars: ^2.0.1
 
 dev_dependencies:
   flutter_test:
