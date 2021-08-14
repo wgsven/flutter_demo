@@ -24,4 +24,8 @@ class HomeBodyVm extends BaseListViewModel<Item, IssueEntity> {
   void removeUselessData(List<Item>? list) {
     list?.removeWhere((element) => element.type == "banner2");
   }
+  @override
+  void doExtraAfterRefresh() async{
+    await loadMore();
+  }
 }
