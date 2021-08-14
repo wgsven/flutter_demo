@@ -8,6 +8,7 @@ import 'package:flutter_open/viewmodel/base_widget.dart';
 import 'package:flutter_open/viewmodel/video/video_body_viewmodel.dart';
 import 'package:flutter_open/viewmodel/video/video_item_widget.dart';
 import 'package:flutter_open/widget/loading_state_widget.dart';
+import 'package:flutter_open/widget/video_player_widget.dart';
 
 const VIDEO_SMALL_CARD_TYPE = 'videoSmallCard';
 
@@ -20,14 +21,31 @@ class VideoDetailPage extends StatefulWidget {
   _VideoDetailPageState createState() => _VideoDetailPageState();
 }
 
-class _VideoDetailPageState extends State<VideoDetailPage> {
+class _VideoDetailPageState extends State<VideoDetailPage> with WidgetsBindingObserver{
   late final Data data;
+  final GlobalKey<VideoPlayerWidgetState> videoKey = GlobalKey();
 
   @override
   void initState() {
     super.initState();
-    debugPrint("data====$arguments()");
     data = widget.data == null ? arguments() : widget.data;
+    WidgetsBinding.instance!.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance!.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    // super.didChangeAppLifecycleState(state);
+    if(state == AppLifecycleState.resumed){
+      videoKey.currentState?.play();
+    }else if(state == AppLifecycleState.paused) {
+      videoKey.currentState?.pause();
+    }
   }
 
   @override
@@ -44,13 +62,16 @@ class _VideoDetailPageState extends State<VideoDetailPage> {
     return Scaffold(
       body: Column(
         children: <Widget>[
+          ///状态栏
           AnnotatedRegion(
               child: Container(
                 height: MediaQuery.of(context).padding.top,
                 color: Colors.black,
               ),
               value: SystemUiOverlayStyle.light),
-          //视频,
+          ///视频,
+          VideoPlayerWidget(key:videoKey,playerUrl: data.playUrl!),
+          ///视频底部列表信息
           Expanded(
               flex: 1,
               child: LoadingStateWidget(
