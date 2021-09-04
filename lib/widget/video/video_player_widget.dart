@@ -1,6 +1,9 @@
 import 'package:chewie/chewie.dart';
 import 'package:flustars/flustars.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_open/utils/navigator_utils.dart';
+import 'package:flutter_open/widget/video/video_player_controller_widget.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPlayerWidget extends StatefulWidget {
@@ -26,8 +29,8 @@ class VideoPlayerWidget extends StatefulWidget {
 }
 
 class VideoPlayerWidgetState extends State<VideoPlayerWidget> {
-  VideoPlayerController? _videoPlayerController;
-  ChewieController? _chewieController;
+  late VideoPlayerController _videoPlayerController;
+  late ChewieController _chewieController;
 
   @override
   void initState() {
@@ -35,12 +38,30 @@ class VideoPlayerWidgetState extends State<VideoPlayerWidget> {
     debugPrint("playerUrl = ${widget.playerUrl}");
     _videoPlayerController = VideoPlayerController.network(widget.playerUrl);
     _chewieController = ChewieController(
-      videoPlayerController: _videoPlayerController!,
+      videoPlayerController: _videoPlayerController,
       autoPlay: widget.autoPlay,
       allowFullScreen: widget.allowFullScreen,
       allowPlaybackSpeedChanging: widget.allowPlaybackSpeedChanging,
       aspectRatio: widget.aspectRatio,
       looping: widget.looping,
+      customControls: VideoPlayerControllerWidget(
+        overlayUi: overlayUi(),
+      ),
+    );
+  }
+
+  Widget overlayUi() {
+    return GestureDetector(
+      onTap: () => back(),
+      child: Container(
+        color: Colors.transparent,
+        height: 48,
+        padding: EdgeInsets.only(left: 10),
+        child: Icon(
+          Icons.arrow_back,
+          color: Colors.white,
+        ),
+      ),
     );
   }
 
@@ -51,22 +72,22 @@ class VideoPlayerWidgetState extends State<VideoPlayerWidget> {
     return Container(
       width: width,
       height: height,
-      child: Chewie(controller: _chewieController!),
+      child: Chewie(controller: _chewieController),
     );
   }
 
   void play() {
-    _chewieController?.play();
+    _chewieController.play();
   }
 
   void pause() {
-    _chewieController?.pause();
+    _chewieController.pause();
   }
 
   @override
   void dispose() {
-    _videoPlayerController?.dispose();
-    _chewieController?.dispose();
+    _videoPlayerController.dispose();
+    _chewieController.dispose();
     super.dispose();
   }
 }

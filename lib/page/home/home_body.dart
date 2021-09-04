@@ -2,11 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_open/model/common_item.dart';
 import 'package:flutter_open/state/base_list_state.dart';
-import 'package:flutter_open/viewmodel/base_widget.dart';
 import 'package:flutter_open/viewmodel/home/home_body_viewmodel.dart';
 import 'package:flutter_open/widget/banner_widget.dart';
 import 'package:flutter_open/widget/list_item_widget.dart';
-import 'package:flutter_open/widget/loading_state_widget.dart';
 
 const TEXT_HEADER_TYPE = 'textHeader';
 

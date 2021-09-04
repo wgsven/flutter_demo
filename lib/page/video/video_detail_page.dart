@@ -8,7 +8,7 @@ import 'package:flutter_open/viewmodel/base_widget.dart';
 import 'package:flutter_open/viewmodel/video/video_body_viewmodel.dart';
 import 'package:flutter_open/viewmodel/video/video_item_widget.dart';
 import 'package:flutter_open/widget/loading_state_widget.dart';
-import 'package:flutter_open/widget/video_player_widget.dart';
+import '../../widget/video/video_player_widget.dart';
 
 const VIDEO_SMALL_CARD_TYPE = 'videoSmallCard';
 

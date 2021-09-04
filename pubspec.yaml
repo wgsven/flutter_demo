@@ -51,6 +51,8 @@ dependencies:
   video_player: ^2.1.14
   #视频播放器控制器
   chewie: ^1.2.2
+  #主要是视频播放设置手机亮度
+  screen_brightness: ^0.0.4
 
 dev_dependencies:
   flutter_test:
