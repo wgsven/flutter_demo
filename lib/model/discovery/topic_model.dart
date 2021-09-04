@@ -114,7 +114,7 @@ class Data {
 class Label {
   String? text;
   String? card;
-  Null? detail;
+  dynamic detail;
 
   Label({this.text, this.card, this.detail});
 

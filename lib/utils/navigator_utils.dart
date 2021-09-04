@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-void toPage(Widget page, bool opaque) {
+void toPage(Widget page, { bool? opaque}) {
   Get.to(() => page, opaque: opaque);
 }
 

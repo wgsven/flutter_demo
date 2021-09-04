@@ -47,6 +47,12 @@ dependencies:
   extended_image: ^4.1.0
   pull_to_refresh: ^2.0.0
   flustars: ^2.0.1
+  #视频播放器
+  video_player: ^2.1.14
+  #视频播放器控制器
+  chewie: ^1.2.2
+  #主要是视频播放设置手机亮度
+  screen_brightness: ^0.0.4
 
 dev_dependencies:
   flutter_test:
