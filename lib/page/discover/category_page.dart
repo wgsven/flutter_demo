@@ -33,7 +33,9 @@ class _CategoryPageState extends State<CategoryPage> {
                       return _closedBuilder(model, index);
                     },
                     openBuilder: (context, action) {
-                      return CategoryDetailPage();
+                      return CategoryDetailPage(
+                        categoryModel: model.itemList[index],
+                      );
                     },
                     // openBuilder: ,
                   );

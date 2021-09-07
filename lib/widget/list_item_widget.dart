@@ -43,6 +43,7 @@ class _ListItemWidgetState extends State<ListItemWidget> {
         debugPrint("点击了item=${item.data?.id}");
       },
       child: Container(
+        padding: EdgeInsets.only(top: 10),
         child: ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(5)),
           child: cacheImage(item.data!.cover!.feed!,
