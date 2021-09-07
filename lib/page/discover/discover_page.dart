@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_open/config/color.dart';
 import 'package:flutter_open/config/string.dart';
+import 'package:flutter_open/page/discover/category_page.dart';
 import 'package:flutter_open/page/discover/follow_page.dart';
 import 'package:flutter_open/widget/appbar.dart';
 
@@ -47,9 +48,7 @@ class _DiscoveryPageState extends State<
                   .toList())),
       body: TabBarView(controller: _tabController, children: <Widget>[
         FollowPage(),
-        Container(
-          color: Colors.blue,
-        ),
+        CategoryPage(),
         Container(
           color: Colors.deepOrange,
         ),

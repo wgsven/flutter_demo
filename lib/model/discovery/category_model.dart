@@ -1,7 +1,7 @@
 class CategoryModel {
   int? id;
   String? name;
-  Null alias;
+  dynamic alias;
   String? description;
   String? bgPicture;
   String? bgColor;
