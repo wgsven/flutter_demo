@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_open/page/discover/category_detail_page.dart';
 import 'package:flutter_open/page/video/video_detail_page.dart';
 import 'package:get/get.dart';
 
 const ROUTE_HOME = "/";
 const ROUTE_VIDEO_DETAIL = "/detail";
+const ROUTE_CATEGORY_DETAIL = "/category/detail";
 
 class GetMaterialAppWidget extends StatefulWidget {
   late final Widget child;
@@ -28,7 +30,8 @@ class _GetMaterialAppWidgetState extends State<GetMaterialAppWidget> {
       initialRoute: ROUTE_HOME,
       getPages: [
         GetPage(name: ROUTE_HOME, page: () => widget.child),
-        GetPage(name: ROUTE_VIDEO_DETAIL, page: () => VideoDetailPage())
+        GetPage(name: ROUTE_VIDEO_DETAIL, page: () => VideoDetailPage()),
+        GetPage(name: ROUTE_CATEGORY_DETAIL, page: () => CategoryDetailPage())
       ],
     );
   }
