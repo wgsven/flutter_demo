@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_open/config/color.dart';
 import 'package:flutter_open/config/string.dart';
+import 'package:flutter_open/page/discover/discover_page.dart';
 import 'package:flutter_open/page/home/home_page.dart';
 import 'package:flutter_open/viewmodel/base_widget.dart';
 import 'package:flutter_open/viewmodel/tab_navigation_viewmodel.dart';
@@ -25,10 +26,8 @@ class _MainPageState extends State<MainPage> {
               physics: NeverScrollableScrollPhysics(),
               // onPageChanged: (index) => model.changeBottomTabIndex(index),//todo 未同步BottomNavigationBar
               children: [
+                DiscoveryPage(),
                 HomePage(),
-                Container(
-                  color: Colors.blue,
-                ),
                 Container(
                   color: Colors.yellow,
                 ),
