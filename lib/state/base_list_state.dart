@@ -12,6 +12,14 @@ abstract class BaseListState<L, M extends BaseListViewModel<L, PagingModel<L>>,
 
   Widget getContentChild(M model);
 
+  bool enablePullUp() {
+    return true;
+  }
+
+  bool enablePullDown() {
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -26,7 +34,10 @@ abstract class BaseListState<L, M extends BaseListViewModel<L, PagingModel<L>>,
               controller: model.refreshController,
               onRefresh: model.refresh,
               onLoading: model.loadMore,
-              enablePullUp: true,
+              enablePullUp: enablePullUp(),
+              //是否能上拉加载更多
+              enablePullDown: enablePullDown(),
+              //是否能下拉刷新
               child: getContentChild(model),
             ),
           );
